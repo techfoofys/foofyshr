@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Salaries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Amount</th>
+      <th>Initial amount per month</th>
+      <th>Prov period</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @salaries.each do |salary| %>
+      <tr>
+        <td><%= salary.user %></td>
+        <td><%= salary.amount %></td>
+        <td><%= salary.initial_amount_per_month %></td>
+        <td><%= salary.prov_period %></td>
+        <td><%= link_to 'Show', salary %></td>
+        <td><%= link_to 'Edit', edit_salary_path(salary) %></td>
+        <td><%= link_to 'Destroy', salary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Salary', new_salary_path %>
