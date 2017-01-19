@@ -37,6 +37,9 @@ gem 'devise', '~> 4.2'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'jquery-turbolinks'
 
+gem 'activeadmin', github: 'activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
