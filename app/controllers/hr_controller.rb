@@ -14,14 +14,18 @@ class HrController < ApplicationController
     end
   end
 
-  def add_user
-    @user = User.new
+  def invite
+    #Send mail
   end
 
   private
 
   def get_user_id
      params.require(:user_id)
+  end
+
+  def get_email_name
+    params.permit(:name , :email)
   end
 
 end

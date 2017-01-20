@@ -2,34 +2,65 @@
   <div class="admin-main-jumbo jumbotron">
     <div class="admin-hd1">All Users</div>
     <div class="">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">
+        Add User
+      </button>
 
-      <%= link_to  add_user_hr_index_path,  rel: 'tooltip', title: 'View Users and details', data: { 'placement': 'bottom' }, class: 'border-btn-outer btn' do %>
-        New User
-      <% end %>
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Add User</h4>
+            </div>
+              <%= form_tag('/hr/invite', method: :get , remote: true) do |f| %>
+                <div class="modal-body">
+                  <div class="">
+                    Send Invite Link to New Employee!
+                  </div>
+
+                  <br>
+                  <div class="field">
+                    <%= label_tag "Name" %>
+                    <%= text_field_tag :name %>
+                  </div>
+                  <div class="field">
+                    <%= label_tag "Email" %>
+                    <%= text_field_tag :email %>
+                  </div>
+
+                  <%= submit_tag "Send Invite", class: 'btn btn-primary' %>
+                </div>
+              <% end %>
+          </div>
+        </div>
+      </div>
+      <!-- Modal Ends -->
     </div>
-      <hr>
-
-
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
+    <hr>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr class="filter-user" data-user="<%#= if user.activate then "active" else "inactive" end %>">
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= get_status(user) %></td>
+            <td>  <button type="button" class="btn btn-info btn-xs" data-toggle="" onclick="get_profile(<%= user.id %>)" data-target="#show_profile">View Profile</button> </td>
           </tr>
-        </thead>
-        <tbody>
-          <% @users.each do |user| %>
-            <tr class="filter-user" data-user="<%#= if user.activate then "active" else "inactive" end %>">
-              <td><%= user.name %></td>
-              <td><%= user.email %></td>
-              <td>  <button type="button" class="btn btn-info btn-xs" data-toggle="" onclick="get_profile(<%= user.id %>)" data-target="#show_profile">View Profile</button> </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-
+        <% end %>
+      </tbody>
+    </table>
   </div>
+
+</div>
 
 
 

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     collection do
       get 'users'
       get 'get_user_profile'
-      get 'add_user'
+      get 'invite'
     end
   end
 
