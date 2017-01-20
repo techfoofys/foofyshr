@@ -13,5 +13,5 @@ ActiveAdmin.register Status do
 #   permitted
 # end
 
-  permit_params :title, :colour
+  permit_params :title, :color
 end

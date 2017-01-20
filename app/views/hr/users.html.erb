@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="admin-main-jumbo jumbotron">
+    <div class="admin-hd1">All Users</div>
+    <div class="">
+
+      <%= link_to  add_user_hr_index_path,  rel: 'tooltip', title: 'View Users and details', data: { 'placement': 'bottom' }, class: 'border-btn-outer btn' do %>
+        New User
+      <% end %>
+    </div>
+      <hr>
+
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr class="filter-user" data-user="<%#= if user.activate then "active" else "inactive" end %>">
+              <td><%= user.name %></td>
+              <td><%= user.email %></td>
+              <td>  <button type="button" class="btn btn-info btn-xs" data-toggle="" onclick="get_profile(<%= user.id %>)" data-target="#show_profile">View Profile</button> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+
+
+  <!-- Modal -->
+  <div id="show_profile" class="modal fade col-sm-12" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">User Profile</h4>
+        </div>
+        <div class="modal-body" id="view_user_profile">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<br>
