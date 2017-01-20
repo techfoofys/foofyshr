@@ -13,7 +13,8 @@
 
   <div class="field">
     <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
+    <%#= f.text_field :user_id %>
+    <%= f.select :user_id, options_for_select(User.all.collect { |c| [c.name, c.id] }, user_profile.user_id), { prompt: 'Select User' }, class: '' , :required => true %>
   </div>
 
   <div class="field">
@@ -38,17 +39,20 @@
 
   <div class="field">
     <%= f.label :role_id %>
-    <%= f.text_field :role_id %>
+    <%#= f.text_field :role_id %>
+    <%= f.select :role_id, options_for_select(Role.all.collect { |c| [c.title, c.id] }, user_profile.role_id), { prompt: 'Select Role' }, class: '' , :required => true %>
   </div>
 
   <div class="field">
     <%= f.label :designation_id %>
-    <%= f.text_field :designation_id %>
+    <%#= f.text_field :designation_id %>
+    <%= f.select :designation_id, options_for_select(Designation.all.collect { |c| [c.title, c.id] }, user_profile.designation_id), { prompt: 'Select Designation' }, class: '' , :required => true %>
   </div>
 
   <div class="field">
     <%= f.label :status_id %>
-    <%= f.text_field :status_id %>
+    <%#= f.text_field :status_id %>
+      <%= f.select :status_id, options_for_select(Status.all.collect { |c| [c.title, c.id] }, user_profile.status_id), { prompt: 'Select Status' }, class: '' , :required => true %>
   </div>
 
   <div class="actions">

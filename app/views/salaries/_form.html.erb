@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
+    <%= f.select :user_id, options_for_select(User.all.collect { |c| [c.name, c.id] }, salary.user_id), { prompt: 'Select User' }, class: '' , :required => true %>
   </div>
 
   <div class="field">

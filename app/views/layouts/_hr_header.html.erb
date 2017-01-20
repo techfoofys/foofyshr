@@ -8,6 +8,16 @@
           <% end %>
         </li>
         <li>
+          <%= link_to user_profiles_path,  rel: 'tooltip', title: 'View Users and details', data: { 'placement': 'bottom' }, class: 'border-btn-outer btn' do %>
+            Users Profile
+          <% end %>
+        </li>
+        <li>
+          <%= link_to salaries_path,  rel: 'tooltip', title: 'View Users and details', data: { 'placement': 'bottom' }, class: 'border-btn-outer btn' do %>
+            Users Salary
+          <% end %>
+        </li>
+        <li>
           <%= link_to roles_path,  rel: 'tooltip', title: 'View Users and details', data: { 'placement': 'bottom' }, class: 'border-btn-outer btn' do %>
             Roles
           <% end %>

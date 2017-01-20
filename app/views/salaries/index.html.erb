@@ -16,7 +16,7 @@
   <tbody>
     <% @salaries.each do |salary| %>
       <tr>
-        <td><%= salary.user %></td>
+        <td><%= salary.user.name %></td>
         <td><%= salary.amount %></td>
         <td><%= salary.initial_amount_per_month %></td>
         <td><%= salary.prov_period %></td>
