@@ -5,9 +5,12 @@
       <%= @status.title %>
     </p>
 
-    <p>
-      <strong>Color:</strong>
-      <%= @status.color %>
+    <p >
+      <strong >Color:</strong>
+      <div class="" style="background-color: <%= @status.color %>">
+        <%= @status.color %>
+      </div>
+
     </p>
 
     <%= link_to 'Edit', edit_status_path(@status) %> |
