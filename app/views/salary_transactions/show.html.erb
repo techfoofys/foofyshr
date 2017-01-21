@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @salary_transaction.user %>
+</p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @salary_transaction.month %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @salary_transaction.amount %>
+</p>
+
+<%= link_to 'Edit', edit_salary_transaction_path(@salary_transaction) %> |
+<%= link_to 'Back', salary_transactions_path %>

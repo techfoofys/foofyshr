@@ -22,6 +22,9 @@
             <td><%= salary.amount %></td>
             <td><%= salary.initial_amount_per_month %></td>
             <td><%= salary.prov_period %></td>
+            <td>
+              <button type="button" class="btn btn-primary btn-xs right" data-toggle="modal" data-target="#pay_Modal" onclick="get_salary_for_current_month(<%= salary.user_id%>)">Pay</button>
+            </td>
             <td><%= link_to 'Show', salary %></td>
           </tr>
         <% end %>
@@ -29,3 +32,30 @@
     </table>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="pay_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Pay Salary</h4>
+      </div>
+      <div id="current_salary">
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Ends -->
+
+<script type="text/javascript">
+  function get_salary_for_current_month(user_id) {
+    var url = '/finance/get_current_salary?user_id=' + user_id ;
+     $.get(url, function(data) {
+       $('#current_salary').html(data); } ).done(function() {
+        //  $('#show_profile').modal('show');
+      });
+
+  }
+</script>

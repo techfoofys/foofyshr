@@ -1,0 +1,1 @@
+json.partial! "salary_transactions/salary_transaction", salary_transaction: @salary_transaction

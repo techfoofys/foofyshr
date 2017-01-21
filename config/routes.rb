@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :salary_transactions
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :salaries
@@ -22,6 +23,8 @@ Rails.application.routes.draw do
   resources :finance do
     collection do
       get 'salaries'
+      get 'get_current_salary'
+      get 'pay_salary'
     end
   end
 
