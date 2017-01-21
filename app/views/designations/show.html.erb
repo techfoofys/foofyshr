@@ -1,14 +1,16 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class=" jumbotron">
+    <p>
+      <strong>Title:</strong>
+      <%= @designation.title %>
+    </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @designation.title %>
-</p>
+    <p>
+      <strong>Description:</strong>
+      <%= @designation.description %>
+    </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @designation.description %>
-</p>
-
-<%= link_to 'Edit', edit_designation_path(@designation) %> |
-<%= link_to 'Back', designations_path %>
+    <%= link_to 'Edit', edit_designation_path(@designation) %> |
+    <%= link_to 'Back', designations_path %>
+  </div>
+</div>

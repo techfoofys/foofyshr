@@ -13,8 +13,7 @@
 
   <div class="form-group">
     <%= f.label 'Employee Name' %>
-    <%#= f.text_form-group :user_id %>
-    <%= f.select :user_id, options_for_select(User.all.collect { |c| [c.name, c.id] }, user_profile.user_id), { prompt: 'Select Employee Name' }, class: 'form-control' , :required => true %>
+    <%= f.select :user_id, options_for_select(User.all.collect { |c| [c.name, c.id] }, user_profile.user_id), { prompt: 'Select Employee Name' }, class: 'form-control' , :required => true , :disabled => true %>
   </div>
   <div class="">
     <div class="form-group col-sm-6">
@@ -33,22 +32,21 @@
   <div class="">
     <div class="form-group col-sm-4">
       <%= f.label :role_id %>
-      <%#= f.text_form-group :role_id %>
       <%= f.select :role_id, options_for_select(Role.all.collect { |c| [c.title, c.id] }, user_profile.role_id), { prompt: 'Select Role' },  class: "form-control" , :required => true %>
     </div>
 
     <div class="form-group col-sm-4">
       <%= f.label :designation_id %>
-      <%#= f.text_form-group :designation_id %>
       <%= f.select :designation_id, options_for_select(Designation.all.collect { |c| [c.title, c.id] }, user_profile.designation_id), { prompt: 'Select Designation' }, class: "form-control" , :required => true %>
     </div>
 
     <div class="form-group col-sm-4">
       <%= f.label :status_id %>
-      <%#= f.text_field :status_id %>
         <%= f.select :status_id, options_for_select(Status.all.collect { |c| [c.title, c.id] }, user_profile.status_id), { prompt: 'Select Status' },  class: "form-control", :required => true %>
     </div>
   </div>
+
+
   <div class="">
     <div class="form-group col-sm-6">
       <%= f.label :address %>
@@ -60,6 +58,9 @@
       <%= f.text_area :per_address ,  class: "form-control" %>
     </div>
   </div>
+
+
+
 
   <div class="actions">
     <%= f.submit %>

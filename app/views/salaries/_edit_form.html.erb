@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label 'New Employees' %>
-    <%= f.select :user_id, options_for_select(User.all.collect { |c| [c.name, c.id] }, salary.user_id), { prompt: 'Select User' }, class: 'form-control' , :required => true %>
+    <%= f.label 'Employee Names' %>
+    <%= f.select :user_id, options_for_select(User.all.collect { |c| [c.name, c.id] }, salary.user_id), { prompt: 'Select User' }, class: 'form-control' , :required => true , disabled: true %>
   </div>
 
   <div class="">

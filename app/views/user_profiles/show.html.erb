@@ -1,44 +1,55 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class=" jumbotron">
+    <div class="row">
+      <div class="col-sm-6">
+        <p>
+          <strong>Employeer Name:</strong>
+          <%= @user_profile.user.name %>
+        </p>
+        <p>
+          <strong>Doj:</strong>
+          <%= @user_profile.doj %>
+        </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @user_profile.user %>
-</p>
-
-<p>
-  <strong>Doj:</strong>
-  <%= @user_profile.doj %>
-</p>
-
-<p>
-  <strong>Dob:</strong>
-  <%= @user_profile.dob %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @user_profile.address %>
-</p>
-
-<p>
-  <strong>Per address:</strong>
-  <%= @user_profile.per_address %>
-</p>
-
-<p>
-  <strong>Role:</strong>
-  <%= @user_profile.role %>
-</p>
-
-<p>
-  <strong>Designation:</strong>
-  <%= @user_profile.designation %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @user_profile.status %>
-</p>
-
-<%= link_to 'Edit', edit_user_profile_path(@user_profile) %> |
-<%= link_to 'Back', user_profiles_path %>
+        <p>
+          <strong>Dob:</strong>
+          <%= @user_profile.dob %>
+        </p>
+        <p>
+          <strong>Designation:</strong>
+          <%= @user_profile.designation.title %>
+        </p>
+        <p>
+          <strong>Role:</strong>
+          <%= @user_profile.role.title %>
+        </p>
+      </div>
+      <div class="col-sm-6">
+        <p>
+          <strong>Status:</strong>
+          <%= @user_profile.status.title %>
+        </p>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-6">
+        <p>
+          <strong>Address:</strong>
+          <%= @user_profile.address %>
+        </p>
+      </div>
+      <div class="col-sm-6">
+        <p>
+          <strong>Permenant address:</strong>
+          <%= @user_profile.per_address %>
+        </p>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <%= link_to 'Edit', edit_user_profile_path(@user_profile) %> |
+      <%= link_to 'Back', user_profiles_path %>
+    </div>
+  </div>
+</div>
