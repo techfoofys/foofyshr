@@ -19,5 +19,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :finance do
+    collection do
+      get 'salaries'
+    end
+  end
+
+
 
 end
