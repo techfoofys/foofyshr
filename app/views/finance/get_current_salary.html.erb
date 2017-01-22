@@ -1,18 +1,27 @@
-<%= form_tag('/finance/pay_salary', method: :get , remote: true) do |f| %>
+<%= form_for(@sal_trans) do |f| %>
   <div class="modal-body">
     <div class="form-group">
-      <%= label_tag "Employee Name" %>
-      <%= text_field_tag :user_id ,'' , class: "form-control" , id: "emp_name" , disabled: true %>
+      <%= label_tag "Employee " %>
+      <%= @sal_trans.user.name %>
+      <%= f.hidden_field :user_id    %>
+      <%#= f.select :user_id, options_for_select(User.all.collect { |c| [c.name, c.id] }, @sal_trans.user_id), { prompt: 'Select User' }, class: 'form-control' , :required => true , readonly: true %>
     </div>
-    <div class="form-group">
-      <%= label_tag "Salary For Month" %>
-      <%= text_field_tag :month %>
-    </div>
-    <div class="form-group">
-      <%= label_tag "Salary Amount" %>
-      <%= text_field_tag :amount %>
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <%= label_tag "Salary For Month" %>
+        <br>
+        <%= f.date_select(:month , { default:   -1.month.from_now  , :discard_day => true } , :class => "form-control col-sm-3 frm-date" ) %>
+      </div>
+
+      <div class="form-group col-sm-6">
+        <%= label_tag "Salary Amount" %>
+        <%= f.text_field :amount , class: "form-control" %>
+      </div>
     </div>
 
-    <%= submit_tag "Send Invite", class: 'btn btn-primary' %>
+    <div class="form-action">
+      <%= submit_tag "Confirm", class: 'btn btn-primary' , data: { confirm: 'Are you sure?' }%>
+    </div>
+
   </div>
 <% end %>

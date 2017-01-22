@@ -11,19 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
+    <%= salary_transaction.user.name %>
+    <%= f.hidden_field :user_id  %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :month %>
-    <%= f.date_select :month %>
+    <%= f.date_select :month , class: "form-control"%>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :amount %>
-    <%= f.text_field :amount %>
+    <%= f.text_field :amount , class: "form-control"%>
   </div>
 
   <div class="actions">

@@ -13,5 +13,5 @@ ActiveAdmin.register UserProfile do
 #   permitted
 # end
 
-  permit_params  :user_id  ,:role_id, :designation_id, :status_id, :doj, :dob ,:address , :per_address
+  permit_params  :user_id  ,:role_id, :designation_id, :status_id, :doj, :dob ,:address , :per_address , :probation
 end

@@ -1,19 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class=" jumbotron">
+    <p>
+      <strong>Employee Name</strong>
+      <%= @salary_transaction.user.name %>
+    </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @salary_transaction.user %>
-</p>
+    <p>
+      <strong>Salary for Month: </strong>
+      <%= @salary_transaction.month %>
+    </p>
 
-<p>
-  <strong>Month:</strong>
-  <%= @salary_transaction.month %>
-</p>
+    <p>
+      <strong>Amount:</strong>
+      <%= @salary_transaction.amount %>
+    </p>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @salary_transaction.amount %>
-</p>
-
-<%= link_to 'Edit', edit_salary_transaction_path(@salary_transaction) %> |
-<%= link_to 'Back', salary_transactions_path %>
+    <%#= link_to 'Edit', edit_salary_transaction_path(@salary_transaction) %> |
+    <%= link_to 'Back', salary_transactions_path %>
+  </div>
+</div>

@@ -1,6 +1,10 @@
-<h1>Editing Salary Transaction</h1>
+<div class="container">
+  <div class=" jumbotron">
+    <div>Editing Salary Transaction</div>
+    <br>
+    <%= render 'form', salary_transaction: @salary_transaction %>
 
-<%= render 'form', salary_transaction: @salary_transaction %>
-
-<%= link_to 'Show', @salary_transaction %> |
-<%= link_to 'Back', salary_transactions_path %>
+    <%#= link_to 'Show', @salary_transaction %> 
+    <%= link_to 'Back', salary_transactions_path %>
+  </div>
+</div>
