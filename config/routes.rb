@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   resources :finance do
     collection do
       get 'salaries'
+      get 'check_probation'
+      get 'update_probation'
       get 'get_current_salary'
       get 'pay_salary'
     end

@@ -1,0 +1,50 @@
+
+<%= form_tag('/finance/update_probation', method: :get) do %>
+
+  <div class="modal-body">
+
+    <div class="form-group col-sm-6">
+      <%= label_tag "Employee Name " %>
+      <br>
+      <%= @user.name %>
+      <%= hidden_field_tag :user_id    %>
+    </div>
+
+    <div class="form-group col-sm-6 ">
+      <%= label_tag "Probation Period Status" %>
+      <%= select_tag :probation, options_for_select([['Active', true], ['Deactive', false]], selected:  @user.user_profile.probation), {class: 'form-control input-md'} %>
+    </div>
+
+    <div class="form-group">
+      <div class="">
+        Transactional History
+      </div>
+      <br>
+      <table class="table  table-striped table-hover table-condensed">
+        <thead>
+          <tr>
+            <th>Amount</th>
+            <th>Salary for Month</th>
+            <th>Transaction Date </th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @user.salary_transaction.each do |trans| %>
+            <tr>
+              <td><%= trans.amount %></td>
+              <td><%= trans.month %></td>
+              <td><%= trans.created_at %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table
+    </div>
+
+    <div class="form-action">
+      <%= submit_tag "Update Probation Status", class: 'btn btn-primary' , data: { confirm: 'Are you sure?' }%>
+    </div>
+
+  </div>
+<% end %>
