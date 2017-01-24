@@ -1,5 +1,5 @@
 
-<%= form_tag('/finance/update_probation', method: :get) do %>
+<%= form_tag('/finance/update_probation', method: :get , remote: true  , id: 'check_probation_frm') do %>
 
   <div class="modal-body">
 
@@ -7,7 +7,14 @@
       <%= label_tag "Employee Name " %>
       <br>
       <%= @user.name %>
-      <%= hidden_field_tag :user_id    %>
+      <%= hidden_field_tag :user_id , @user.id  %>
+      <br> <br>
+      <%= label_tag "Probation Period " %>
+      <%=  @user.salary.prov_period %> Months
+
+    </div>
+    <div class="form-group col-sm-6 ">
+
     </div>
 
     <div class="form-group col-sm-6 ">
@@ -48,3 +55,11 @@
 
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $("#check_probation_frm").bind('ajax:success', function(data) {
+        $('#probation_Modal').modal('hide');
+
+        console.log(data);
+   });
+</script>

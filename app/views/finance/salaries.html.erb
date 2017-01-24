@@ -23,7 +23,11 @@
             <td><%= salary.initial_amount_per_month %></td>
             <td><%= salary.prov_period %></td>
             <td>
-              <button type="button" class="btn btn-primary btn-xs right"  onclick="get_salary_for_current_month(<%= salary.user_id%>)">Pay</button>
+              <% if  salary.user.user_profile.probation %>
+                <button type="button" class="btn btn-primary btn-xs right"  onclick="check_probation_period(<%= salary.user_id%>)">Pay</button>
+              <% else %>
+                <button type="button" class="btn btn-primary btn-xs right"  onclick="get_salary_for_current_month(<%= salary.user_id%>)">Pay</button>
+              <% end %>
             </td>
             <td><%#= link_to 'Show', salary %></td>
           </tr>
@@ -67,14 +71,11 @@
 
 <script type="text/javascript">
   function get_salary_for_current_month(user_id) {
-
-    check_probation_period(user_id);
-
-    // var url = '/finance/get_current_salary?user_id=' + user_id ;
-    //  $.get(url, function(data) {
-    //    $('#current_salary').html(data); } ).done(function() {
-    //      $('#pay_Modal').modal('show');
-    //   });
+    var url = '/finance/get_current_salary?user_id=' + user_id ;
+     $.get(url, function(data) {
+       $('#current_salary').html(data); } ).done(function() {
+         $('#pay_Modal').modal('show');
+      });
   }
 
   function check_probation_period(user_id) {
@@ -85,13 +86,17 @@
       dataType: 'html',
       success: function(data){
         if ( data != 'Not Yet Completed' ) {
-          console.log(data);
            $('#view_probation').html(data);
             $('#probation_Modal').modal('show');
+        }
+        else{
+          get_salary_for_current_month(user_id);
         }
       }
     });
   }
+
+
 
 
 </script>

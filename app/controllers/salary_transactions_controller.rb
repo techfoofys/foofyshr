@@ -1,4 +1,6 @@
 class SalaryTransactionsController < InheritedResources::Base
+  before_action :authenticate_user!
+  before_action :authorize_d_hr, only: [ :create ]
 
   def create
     @salary_trans = SalaryTransaction.new(salary_transaction_params)

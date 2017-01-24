@@ -1,4 +1,9 @@
 class DesignationsController < ApplicationController
+
+  before_action :authenticate_user!
+
+  before_action :authorize_d_hr, only: [:index , :show ,:new , :edit , :create , :update , :destroy]
+
   before_action :set_designation, only: [:show, :edit, :update, :destroy]
 
   # GET /designations

@@ -1,6 +1,11 @@
 class FinanceController < ApplicationController
-  before_action :get_user_id, only: [:get_current_salary , :check_probation]
-    layout false, only: [ :get_current_salary  , :check_probation ]
+    before_action :authenticate_user!
+    before_action :authorize_d_hr, only: [:salaries , :check_probation ,:update_probation , :get_current_salary , :pay_salary ]
+    before_action :authorize_r_finance, only: [:salaries , :check_probation ,:update_probation , :get_current_salary , :pay_salary ]
+
+    before_action :get_user, only: [:get_current_salary , :check_probation , :update_probation]
+
+    layout false, only: [ :get_current_salary  , :check_probation , :update_probation]
 
   def salaries
     @salaries = Salary.all
@@ -30,7 +35,14 @@ class FinanceController < ApplicationController
   end
 
   def update_probation
-    byebug
+    respond_to do |format|
+      if @user.user_profile.update(probation: params[:probation])
+        format.js{render :js => "get_salary_for_current_month(#{@user.id});"}
+      else
+        # format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def get_current_salary
@@ -59,7 +71,7 @@ class FinanceController < ApplicationController
 
   private
 
-  def get_user_id
+  def get_user
     @user = User.find(params[:user_id])
   end
 end

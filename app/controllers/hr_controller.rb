@@ -1,6 +1,13 @@
 class HrController < ApplicationController
 
+  before_action :authenticate_user!
+  before_action :authorize_d_hr, only: [:invite ]
+  before_action :authorize_r_hr, only: [:invite ]
+
+  before_action :authorize_r_hr_or_finance, only: [:users , :get_user_profile  ]
+
   layout false, only: [ :get_user_profile  ]
+
 
 
   def users
