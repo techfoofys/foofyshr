@@ -24,3 +24,30 @@
 .alert-notice {
   @extend .alert-info;
 }
+
+.main-nav.navbar-inverse,
+.footer-nav.navbar-inverse{
+  background-color: rgb(228, 149, 80) !important;
+  border-color: transparent;
+
+  li a {
+    color: #fff;
+  }
+}
+.main-nav{
+  margin-bottom: 0px !important;
+}
+.hr-nav.navbar-inverse,
+.finance-nav.navbar-inverse{
+  background-color: transparent;
+  border-color: rgb(228, 149, 80) !important;
+}
+.navbar-brand
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin:0 auto;
+    color: #fff !important;
+}

@@ -11,35 +11,43 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name , class: "form-control"%>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.text_area :description , class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :total_budget %>
-    <%= f.number_field :total_budget %>
+  <div class="">
+
+
+    <div class="form-group col-sm-6">
+      <%= f.label :from %>
+      <br>
+      <%= f.date_select(:from, {}, {:class => "form-control col-sm-3 frm-date"}) %>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <%= f.label :to %>
+      <br>
+      <%= f.date_select(:to, {}, {:class => "form-control col-sm-3 frm-date"}) %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :from %>
-    <%= f.date_select :from %>
+  <div class="">
+    <div class="form-group col-sm-6">
+      <%= f.label :total_budget %>
+      <%= f.number_field :total_budget , class: "form-control" %>
+    </div>
+    <div class="form-group col-sm-6">
+      <%= f.label :instalments %>
+      <%= f.select(:instalments, ['10','9','8','7','6','5', '4', '3', '2', '1'], {:selected => '2'}, {:class=>'form-control'}) %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :to %>
-    <%= f.date_select :to %>
-  </div>
-
-  <div class="field">
-    <%= f.label :instalments %>
-    <%= f.number_field :instalments %>
-  </div>
 
   <div class="actions">
     <%= f.submit %>

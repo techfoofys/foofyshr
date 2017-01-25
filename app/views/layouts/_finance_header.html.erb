@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse">
+<nav class="finance-nav navbar navbar-inverse">
   <div class="container">
     <div id="navbar">
       <ul class="nav navbar-nav">
@@ -10,6 +10,11 @@
         <li>
           <%= link_to salaries_finance_index_path,  rel: 'tooltip', title: 'List all Employeer Salaries', data: { 'placement': 'bottom' }, class: 'border-btn-outer btn' do %>
             Salaries
+          <% end %>
+        </li>
+        <li>
+          <%= link_to salary_transactions_path,  rel: 'tooltip', title: 'List all Employeer Salaries', data: { 'placement': 'bottom' }, class: 'border-btn-outer btn' do %>
+            Transactions
           <% end %>
         </li>
 

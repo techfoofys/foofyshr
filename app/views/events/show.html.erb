@@ -1,0 +1,26 @@
+<div class="container">
+  <div class=" jumbotron">
+    <p>
+      <strong>Name:</strong>
+      <%= @event.name %>
+    </p>
+
+    <p>
+      <strong>Description:</strong>
+      <%= @event.description %>
+    </p>
+
+    <p>
+      <strong>Event date:</strong>
+      <%= @event.event_date %>
+    </p>
+
+    <p>
+      <strong>Status:</strong>
+      <%= @event.status.title %>
+    </p>
+
+    <%= link_to 'Edit', edit_event_path(@event) %> |
+    <%= link_to 'Back', events_path %>
+  </div>
+</div>
