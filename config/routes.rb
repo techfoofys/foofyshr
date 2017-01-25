@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :projects
   resources :salary_transactions
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -29,6 +30,10 @@ Rails.application.routes.draw do
       get 'pay_salary'
     end
   end
+
+
+  get 'welcome/public/:id', to: 'welcome#public_profile', as: 'public'
+
 
 
 

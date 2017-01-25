@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  total_budget: 1
+  from: 2017-01-25
+  to: 2017-01-25
+  instalments: 1
+
+two:
+  name: MyString
+  description: MyText
+  total_budget: 1
+  from: 2017-01-25
+  to: 2017-01-25
+  instalments: 1

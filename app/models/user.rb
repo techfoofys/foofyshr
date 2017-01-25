@@ -6,5 +6,7 @@ class User < ApplicationRecord
   has_one :user_profile, foreign_key: 'user_id', class_name: 'UserProfile'#, dependent: :destroy
   has_one :salary, foreign_key: 'user_id', class_name: 'Salary'#, dependent: :destroy
   has_many :salary_transaction
-  
+
+  has_and_belongs_to_many :projects, join_table: :users_projects , class_name: "Project"
+
 end

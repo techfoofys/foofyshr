@@ -1,11 +1,100 @@
 <% content_for :top_content do %>
-  <div class="jumbotron">
+  <div class="main-page">
     <div class="container">
-      <h1>Welcome!</h1>
-      <p>Register to get started.</p>
-      <p>
-        <%= link_to 'Register', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
-      </p>
+
+      <div class="row">
+        <div class="col-sm-5">
+          <div class="panel panel-primary">
+            <div class="panel-heading">Our Team</div>
+            <div class="panel-body">
+              <table class="table table-striped table-hover table-condensed">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Designation</th>
+                    <th colspan="3"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @user_profiles.each do |user_profile| %>
+                    <tr>
+                      <td><%= link_to user_profile.user.name , public_path(user_profile.id) , class:''%></td>
+                      <td><%= user_profile.role.title %></td>
+                      <td><%= user_profile.designation.title %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-sm-offset-1 col-sm-5">
+          <div class="panel panel-success">
+            <div class="panel-heading">Our Projects</div>
+            <div class="panel-body">
+              <table class="table table-striped table-hover table-condensed">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Start date</th>
+                    <th colspan="3"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @projects.each do |project| %>
+                    <tr>
+                      <td><%= link_to project.name , public_path(project.id) , class:''%></td>
+                      <td><%= project.created_at %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=" col-sm-5">
+          <div class="panel panel-info">
+            <div class="panel-heading">Upcomming Birthdays in current Month</div>
+            <div class="panel-body">
+              <table class="table table-striped table-hover table-condensed">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Birth date</th>
+                    <th colspan="3"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @birthday_users.each do |birthday_user| %>
+                    <tr>
+                      <td><%= link_to birthday_user.user.name , public_path(birthday_user.id) , class:''%></td>
+                      <td><%= birthday_user.dob %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-offset-1 col-sm-5">
+          <div class="panel panel-warning">
+            <div class="panel-heading">Upcomming Events</div>
+            <div class="panel-body">
+              Comming Soon!
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
     </div>
   </div>
 <% end %>
