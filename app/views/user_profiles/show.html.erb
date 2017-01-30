@@ -29,6 +29,12 @@
           <strong>Status:</strong>
           <%= @user_profile.status.title %>
         </p>
+        <% if !@user_profile.profile_image_id.nil? %>
+          <%= image_tag attachment_url(@user_profile, :profile_image, :fill, 200, 200, format: "jpg") %>
+        <% else %>
+          Profile Image Not Uploaded
+        <% end %>
+
       </div>
     </div>
     <br>

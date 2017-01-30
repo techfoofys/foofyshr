@@ -40,6 +40,11 @@ gem 'jquery-turbolinks'
 gem 'activeadmin', github: 'activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
+#Refile
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+gem "refile-s3", '~> 0.2.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
