@@ -1,13 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @document.user %>
+  <strong>Employee Name:</strong>
+  <%= @document.user.name %>
 </p>
 
 <p>
   <strong>Title:</strong>
-  <%= @document.title %>
+  <%= @document.title %> <br>
+  <%= image_tag attachment_url(@document, :doc_image, :fill, 300, 400, format: "jpg") %>
 </p>
 
 <%= link_to 'Edit', edit_document_path(@document) %> |
