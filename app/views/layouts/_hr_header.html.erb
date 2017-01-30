@@ -1,6 +1,6 @@
 <nav class="hr-nav navbar navbar-inverse">
   <div class="container">
-  
+
     <div id="navbar ">
       <ul class="nav navbar-nav">
         <li>
@@ -36,6 +36,11 @@
         <li>
           <%= link_to events_path,  rel: 'tooltip', title: 'List Events', data: { 'placement': 'bottom' }, class: 'border-btn-outer btn' do %>
             Events
+          <% end %>
+        </li>
+        <li>
+          <%= link_to projects_path,  rel: 'tooltip', title: 'List Projects', data: { 'placement': 'bottom' }, class: 'border-btn-outer btn' do %>
+            Projects
           <% end %>
         </li>
       </ul>
