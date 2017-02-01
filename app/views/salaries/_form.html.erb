@@ -13,7 +13,7 @@
 
   <div class="form-group">
     <%= f.label 'New Employees' %>
-    <%= f.select :user_id, options_for_select(User.all.collect { |c| [c.name, c.id] }, salary.user_id), { prompt: 'Select User' }, class: 'form-control' , :required => true %>
+    <%= f.select :user_id, options_for_select(User.where.not(:id => Salary.select(:user_id).map(&:user_id)).collect { |c| [c.name, c.id] }, salary.user_id), { prompt: 'Select User' }, class: 'form-control' , :required => true %>
   </div>
 
   <div class="">

@@ -47,20 +47,37 @@ class FinanceController < ApplicationController
 
   def get_current_salary
     @sal_trans = SalaryTransaction.new(user: @user)
-    transaction = SalaryTransaction.where(user_id: @user)
-    if transaction.present?
+    # transaction = SalaryTransaction.where(user_id: @user)
+
+    if UserProfile.where(user_id: @user).first.doj < Time.now - 1.month
       if @user.user_profile.probation
-        @sal_trans.amount = @user.salary.initial_amount_per_month
+        @sal_trans.amount = (@user.salary.initial_amount_per_month).round
       else
-        @sal_trans.amount = @user.salary.amount / 12
+        @sal_trans.amount = (@user.salary.amount / 12).round
       end
     else
+      #First Salary
+      salary_month = Time.now - 1.month
+      days = Time.days_in_month(salary_month.month, salary_month.year)
+
+      user_date_oj = UserProfile.where(user_id: @user).first.doj.day
+      working_days = days - user_date_oj
+
       if @user.user_profile.probation
-        @sal_trans.amount = @user.salary.initial_amount_per_month
+        @sal_trans.amount = (((@user.salary.initial_amount_per_month)/days) * working_days ).round
       else
-        @sal_trans.amount = @user.salary.amount / 12
+        @sal_trans.amount = (((@user.salary.amount / 12)/days) * working_days ).round
       end
     end
+
+    #Calculate Partial Salary
+    sal_month = Time.now - 1.month
+    transactionof_sal_month = SalaryTransaction.where( "cast(strftime('%m', month) as int) = ?", sal_month.month  )
+    user_transactions_of_sal_month = transactionof_sal_month.where(user_id: @user)
+    total_transaction_for_sal_month = user_transactions_of_sal_month.sum(:amount)
+
+    #Removing Already Paid Salary for the month
+    @sal_trans.amount =   @sal_trans.amount - total_transaction_for_sal_month
 
   end
 

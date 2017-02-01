@@ -11,6 +11,10 @@
           <th>Salary in Lakh Per Annum</th>
           <th>Initial amount per month</th>
           <th>Prov period</th>
+          <th>Current Month Salary</th>
+          <th>Working Days</th>
+          <th>Partial Salary Paid</th>
+          <th>Remaining Salary</th>
           <th colspan="3"></th>
         </tr>
       </thead>
@@ -22,6 +26,14 @@
             <td><%= salary.amount %></td>
             <td><%= salary.initial_amount_per_month %></td>
             <td><%= salary.prov_period %></td>
+            <td><%= calculate_salary(salary.user.id )%></td>
+            <td><%= get_working_days(salary.user.id )%></td>
+            <td>
+              <%= calculate_partial_salary(salary.user.id)%>
+            </td>
+            <td>
+              <%= final_amount(salary.user.id)%>
+            </td>
             <td>
               <% if  salary.user.user_profile.probation %>
                 <button type="button" class="btn btn-primary btn-xs right"  onclick="check_probation_period(<%= salary.user_id%>)">Pay</button>

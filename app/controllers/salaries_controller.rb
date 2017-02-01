@@ -27,7 +27,14 @@ class SalariesController < ApplicationController
   # POST /salaries
   # POST /salaries.json
   def create
+    
     @salary = Salary.new(salary_params)
+
+    if  salary_params[:prov_period].to_i > 0
+      user_profile = UserProfile.where(user_id: salary_params[:user_id]).first
+      user_profile.probation = true
+      user_profile.save!
+    end
 
     respond_to do |format|
       if @salary.save
