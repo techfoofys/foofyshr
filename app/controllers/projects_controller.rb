@@ -7,6 +7,6 @@ class ProjectsController < InheritedResources::Base
   private
 
     def project_params
-      params.require(:project).permit(:name, :description, :total_budget, :from, :to, :no_instalments)
+      params.require(:project).permit(:name, :description, :total_budget, :from, :to, :no_instalments , :status)
     end
 end
