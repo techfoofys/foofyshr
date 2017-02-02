@@ -9,3 +9,16 @@
   padding: 9px;
   font-weight: 600;
 }
+.emp_name{
+  color: #e49550 !important;
+  font-weight: 600 !important;
+  font-size: 23px !important;
+}
+.emp_dob,
+.emp_role,
+.emp_email{
+  color: #00ab7e !important;
+  font-size: 14px !important;
+  font-style: italic !important;
+  font-weight: 600 !important;
+}

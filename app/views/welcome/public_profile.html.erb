@@ -1,0 +1,68 @@
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-4">
+       <p class="emp_name">
+        <%=  @user_profile.user.name %>
+      </p>
+      <p class="emp_dob">
+          Date of Birth: <%=  @user_profile.dob %>
+      </p>
+
+      <p class="emp_role">
+          Role: <%=  @user_profile.role.title %>
+      </p>
+
+      <p class="emp_email">
+          Email-id: <%=  @user_profile.user.email %>
+      </p>
+
+      <br>
+    </div>
+    <div class="col-sm-4">
+      <% if  @user_profile.profile_image_id %>
+        <%= image_tag attachment_url(@user_profile, :profile_image, :fill, 200, 200, format: 'jpg'), alt: "Profile Image" ,  class: "img-thumbnail" %>
+      <% else %>
+          <%= image_tag "default.png", class: 'img-thumbnail' , :size => "200x100" , :crop => :fill  %>
+      <% end %>
+
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+
+
+  <div class="col-sm-offset-3 col-sm-6">
+    <div class="">
+      <strong>Project List</strong>
+    </div>
+    <br>
+
+    <% if @user_profile.user.projects.present? %>
+      <table class="table table-striped">
+        <thead>
+          <th>Name</th>
+          <th>Start Date</th>
+          <th>ETA Delivery Date</th>
+          <th>Status</th>
+        </thead>
+
+        <% @user_profile.user.projects.each do |project| %>
+          <tr>
+            <td><%= project.name %></td>
+            <td><%= project.from %></td>
+            <td><%= project.to %></td>
+            <td><%= project.status %></td>
+          </tr>
+        <% end %>
+
+      </table>
+
+    <% else %>
+      Not Available
+    <% end %>
+
+  </div>
+</div>
+  <br>
+
+</div>
