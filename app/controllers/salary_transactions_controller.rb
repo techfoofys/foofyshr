@@ -1,7 +1,7 @@
 class SalaryTransactionsController < InheritedResources::Base
   before_action :authenticate_user!
   before_action :authorize_d_hr, only: [ :create ]
-  before_action :authorize_r_finance , only: [:index , :edit , :show, :update , :destroy , :new] 
+  before_action :authorize_r_finance , only: [:index , :edit , :show, :update , :destroy , :new]
 
   def create
     @salary_trans = SalaryTransaction.new(salary_transaction_params)
@@ -21,6 +21,6 @@ class SalaryTransactionsController < InheritedResources::Base
   private
 
     def salary_transaction_params
-      params.require(:salary_transaction).permit(:user_id, :month, :amount)
+      params.require(:salary_transaction).permit(:user_id, :month, :amount , :partial)
     end
 end

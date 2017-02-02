@@ -7,16 +7,24 @@
       <%#= f.select :user_id, options_for_select(User.all.collect { |c| [c.name, c.id] }, @sal_trans.user_id), { prompt: 'Select User' }, class: 'form-control' , :required => true , readonly: true %>
     </div>
     <div class="row">
-      <div class="form-group col-sm-6">
+      <div class="form-group col-sm-5">
         <%= label_tag "Salary For Month" %>
         <br>
         <%= f.date_select(:month , { default:   -1.month.from_now  , :discard_day => true } , :class => "form-control col-sm-3 frm-date" ) %>
       </div>
 
-      <div class="form-group col-sm-6">
+      <div class="form-group col-sm-4">
         <%= label_tag "Salary Amount" %>
         <%= f.text_field :amount , class: "form-control" %>
       </div>
+
+      <div class="form-group col-sm-3">
+        <%= label_tag "Partial Payment" %>
+        <%#= f.select( :partial, options_for_select([['Yes', true], ['No', false]], selected:  false),  {class: 'form-control input-md'} ) %>
+        <%#= f.select :partial, options_for_select([["Select One", ""], "Cell", "Work", "Office", "Home", "Other"]), :class => 'genForm_dropBox' %>
+        <%= f.select(:partial, options_for_select([['Yes', true], ['No', false]], selected:  false), {}, { :class => 'form-control input-md' }) %>
+      </div>
+
     </div>
 
     <div class="form-action">
