@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :instalments
+  resources :instalments  do
+    collection do
+      get 'get_instalments'
+    end
+  end
+
   resources :documents
   resources :events
   resources :projects

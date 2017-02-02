@@ -30,7 +30,25 @@
       <%= @project.no_instalments %>
     </p>
 
+    <button type="button" name="Instalments"  onclick="get_instalment_details(<%=@project.id%>)" class="btn btn-primary">Instalments</button>
+
     <%= link_to 'Edit', edit_project_path(@project) %> |
     <%= link_to 'Back', projects_path %>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="instalment_detail_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Instalment Details</h4>
+      </div>
+      <div id="view_instalments">
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Ends -->
