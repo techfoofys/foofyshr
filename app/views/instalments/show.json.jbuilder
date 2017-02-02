@@ -1,0 +1,1 @@
+json.partial! "instalments/instalment", instalment: @instalment

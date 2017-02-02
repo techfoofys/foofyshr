@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @instalment.project %>
+</p>
+
+<p>
+  <strong>Instalment date:</strong>
+  <%= @instalment.instalment_date %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @instalment.amount %>
+</p>
+
+<p>
+  <strong>Instalment no:</strong>
+  <%= @instalment.instalment_no %>
+</p>
+
+<%= link_to 'Edit', edit_instalment_path(@instalment) %> |
+<%= link_to 'Back', instalments_path %>

@@ -1,0 +1,37 @@
+<%= form_for(instalment) do |f| %>
+  <% if instalment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(instalment.errors.count, "error") %> prohibited this instalment from being saved:</h2>
+
+      <ul>
+      <% instalment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :project_id %>
+    <%= f.text_field :project_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :instalment_date %>
+    <%= f.date_select :instalment_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :amount %>
+    <%= f.text_field :amount %>
+  </div>
+
+  <div class="field">
+    <%= f.label :instalment_no %>
+    <%= f.number_field :instalment_no %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
