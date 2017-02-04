@@ -72,7 +72,7 @@ class FinanceController < ApplicationController
 
     #Calculate Partial Salary
     sal_month = Time.now - 1.month
-    transactionof_sal_month = SalaryTransaction.where( "cast(strftime('%m', month) as int) = ?", sal_month.month  )
+    transactionof_sal_month = SalaryTransaction.where( "extract(month from month)  = ?", sal_month.month  )
     user_transactions_of_sal_month = transactionof_sal_month.where(user_id: @user)
     total_transaction_for_sal_month = user_transactions_of_sal_month.sum(:amount)
 
