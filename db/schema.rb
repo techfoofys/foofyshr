@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303113433) do
+ActiveRecord::Schema.define(version: 20170303113434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -197,7 +197,9 @@ ActiveRecord::Schema.define(version: 20170303113433) do
     t.integer  "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "role_id"
     t.index ["project_id"], name: "index_users_projects_on_project_id", using: :btree
+    t.index ["role_id"], name: "index_users_projects_on_role_id", using: :btree
     t.index ["user_id"], name: "index_users_projects_on_user_id", using: :btree
   end
 
@@ -212,5 +214,6 @@ ActiveRecord::Schema.define(version: 20170303113433) do
   add_foreign_key "user_profiles", "statuses"
   add_foreign_key "user_profiles", "users"
   add_foreign_key "users_projects", "projects"
+  add_foreign_key "users_projects", "roles"
   add_foreign_key "users_projects", "users"
 end
