@@ -4,13 +4,13 @@
     <div class="frm_header_text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit </div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name) ,:html => { class: "frm_login"}) do |f| %>
       <div class="form-group">
-        <%= f.label "Email Address" %><br />
+        <%= f.label "Email Address" , class: "text-uppercase" %><br />
         <%= f.email_field( :email, autofocus: "off" , class: "frm_input form-control glyphicon-envelope" ) %>
 
       </div>
 
       <div class="form-group">
-        <%= f.label :password %><br />
+        <%= f.label :password , class: "text-uppercase" %><br />
         <%= f.password_field( :password, autocomplete: "off"  , class: "frm_input form-control" )%>
 
       </div>
