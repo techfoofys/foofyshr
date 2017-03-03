@@ -8,5 +8,5 @@
 AdminUser.create!(email: 'admin@foofys.com', password: 'foofys123', password_confirmation: 'foofys123')
 Designation.create!(title: 'HR' , description: 'HR')
 Role.create!(title: 'HR' , description: 'HR')
-Status.create!(title: 'True' )
-Status.create!(title: 'False' )
+Status.create!(title: 'Active' , color: '#75c36f' )
+Status.create!(title: 'False' , color: '#e83636')

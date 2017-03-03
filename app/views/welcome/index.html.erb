@@ -18,6 +18,7 @@
                     </tr>
                   </thead>
                   <tbody>
+                    
                     <% @user_profiles.each do |user_profile| %>
                       <tr>
                         <td><%= link_to user_profile.user.name , public_path(user_profile.id) , class:''%></td>
