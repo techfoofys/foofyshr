@@ -1,0 +1,57 @@
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-4">
+       <p class="emp_name">
+
+        <%=  @project.name %>
+      </p>
+      <p class="emp_dob">
+          Start Date: <%=  @project.from %>
+      </p>
+
+      <p class="emp_role">
+          Estimated End Date : <%=  @project.to %>
+      </p>
+
+      <p class="emp_email">
+          Description: <%=  @project.description %>
+      </p>
+
+      <br>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+
+
+  <div class="col-sm-offset-3 col-sm-6">
+    <div class="">
+      <strong>Buddys Working On This</strong>
+    </div>
+    <br>
+    <% if @project.users.present? %>
+      <table class="table table-striped">
+        <thead>
+          <th>Name</th>
+          <th>Role</th>
+        </thead>
+
+        <% @project.users.each do |user| %>
+          <tr>
+            <td><%= link_to user.name , public_path(user.user_profile.id) , class:''%></td>
+            <td><%= user.user_profile.role.title %></td>
+          </tr>
+        <% end %>
+
+      </table>
+
+    <% else %>
+      Currently No one Alloted
+    <% end %>
+
+
+  </div>
+</div>
+  <br>
+
+</div>

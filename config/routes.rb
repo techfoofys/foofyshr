@@ -41,6 +41,7 @@ Rails.application.routes.draw do
 
 
   get 'welcome/public/:id', to: 'welcome#public_profile', as: 'public'
+  get 'welcome/public_project/:id', to: 'welcome#public_project', as: 'public_project'
 
 
 

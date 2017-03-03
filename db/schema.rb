@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170202143954) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
     t.text     "body"
@@ -21,9 +24,9 @@ ActiveRecord::Schema.define(version: 20170202143954) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
-    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -39,8 +42,8 @@ ActiveRecord::Schema.define(version: 20170202143954) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.index ["email"], name: "index_admin_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
   end
 
   create_table "designations", force: :cascade do |t|
@@ -56,7 +59,7 @@ ActiveRecord::Schema.define(version: 20170202143954) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.string   "doc_image_id"
-    t.index ["user_id"], name: "index_documents_on_user_id"
+    t.index ["user_id"], name: "index_documents_on_user_id", using: :btree
   end
 
   create_table "events", force: :cascade do |t|
@@ -66,7 +69,7 @@ ActiveRecord::Schema.define(version: 20170202143954) do
     t.integer  "status_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["status_id"], name: "index_events_on_status_id"
+    t.index ["status_id"], name: "index_events_on_status_id", using: :btree
   end
 
   create_table "instalments", force: :cascade do |t|
@@ -76,7 +79,7 @@ ActiveRecord::Schema.define(version: 20170202143954) do
     t.integer  "instalment_no"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["project_id"], name: "index_instalments_on_project_id"
+    t.index ["project_id"], name: "index_instalments_on_project_id", using: :btree
   end
 
   create_table "projects", force: :cascade do |t|
@@ -105,7 +108,7 @@ ActiveRecord::Schema.define(version: 20170202143954) do
     t.integer  "prov_period"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-    t.index ["user_id"], name: "index_salaries_on_user_id"
+    t.index ["user_id"], name: "index_salaries_on_user_id", using: :btree
   end
 
   create_table "salary_transactions", force: :cascade do |t|
@@ -115,7 +118,7 @@ ActiveRecord::Schema.define(version: 20170202143954) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean  "partial"
-    t.index ["user_id"], name: "index_salary_transactions_on_user_id"
+    t.index ["user_id"], name: "index_salary_transactions_on_user_id", using: :btree
   end
 
   create_table "statuses", force: :cascade do |t|
@@ -138,10 +141,10 @@ ActiveRecord::Schema.define(version: 20170202143954) do
     t.datetime "updated_at",       null: false
     t.boolean  "probation"
     t.string   "profile_image_id"
-    t.index ["designation_id"], name: "index_user_profiles_on_designation_id"
-    t.index ["role_id"], name: "index_user_profiles_on_role_id"
-    t.index ["status_id"], name: "index_user_profiles_on_status_id"
-    t.index ["user_id"], name: "index_user_profiles_on_user_id"
+    t.index ["designation_id"], name: "index_user_profiles_on_designation_id", using: :btree
+    t.index ["role_id"], name: "index_user_profiles_on_role_id", using: :btree
+    t.index ["status_id"], name: "index_user_profiles_on_status_id", using: :btree
+    t.index ["user_id"], name: "index_user_profiles_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -165,10 +168,10 @@ ActiveRecord::Schema.define(version: 20170202143954) do
     t.datetime "locked_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
   end
 
   create_table "users_projects", force: :cascade do |t|
@@ -176,8 +179,19 @@ ActiveRecord::Schema.define(version: 20170202143954) do
     t.integer  "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_users_projects_on_project_id"
-    t.index ["user_id"], name: "index_users_projects_on_user_id"
+    t.index ["project_id"], name: "index_users_projects_on_project_id", using: :btree
+    t.index ["user_id"], name: "index_users_projects_on_user_id", using: :btree
   end
 
+  add_foreign_key "documents", "users"
+  add_foreign_key "events", "statuses"
+  add_foreign_key "instalments", "projects"
+  add_foreign_key "salaries", "users"
+  add_foreign_key "salary_transactions", "users"
+  add_foreign_key "user_profiles", "designations"
+  add_foreign_key "user_profiles", "roles"
+  add_foreign_key "user_profiles", "statuses"
+  add_foreign_key "user_profiles", "users"
+  add_foreign_key "users_projects", "projects"
+  add_foreign_key "users_projects", "users"
 end
