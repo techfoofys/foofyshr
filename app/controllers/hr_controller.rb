@@ -23,6 +23,11 @@ class HrController < ApplicationController
 
   def invite
     #Send mail
+     Invite.create(get_email_name)
+     InviteMailer.invite(get_email_name[:email] , get_email_name[:name]).deliver_now
+
+     head :no_content
+
   end
 
   private

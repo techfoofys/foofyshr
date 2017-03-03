@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>From:</strong>
+  <%= @leave_application.from %>
+</p>
+
+<p>
+  <strong>To:</strong>
+  <%= @leave_application.to %>
+</p>
+
+<p>
+  <strong>Reason:</strong>
+  <%= @leave_application.reason %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @leave_application.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @leave_application.user %>
+</p>
+
+<%= link_to 'Edit', edit_leave_application_path(@leave_application) %> |
+<%= link_to 'Back', leave_applications_path %>

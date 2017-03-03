@@ -3,7 +3,7 @@
     <div class="">
       All Employees
       <% if  current_user.user_profile.role.title == "HR"  and current_user.user_profile.designation.title == "HR" %>
-        <button type="button" class="btn btn-primary btn-xs right" data-toggle="modal" data-target="#myModal">
+        <button type="button" class="btn btn-primary btn-xs right" data-toggle="modal" data-target="#inviteModal">
           Add New Employee
         </button>
       <% end %>
@@ -13,14 +13,14 @@
 
 
       <!-- Modal -->
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal fade" id="inviteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title" id="myModalLabel">Add Employee</h4>
             </div>
-              <%= form_tag('/hr/invite', method: :get , remote: true) do |f| %>
+              <%= form_tag('/hr/invite', method: :post , remote: true , multipart: true) do  %>
                 <div class="modal-body">
                   <div class="">
                     Send Invite Link to New Employee!
@@ -36,7 +36,7 @@
                     <%= text_field_tag :email %>
                   </div>
 
-                  <%= submit_tag "Send Invite", class: 'btn btn-primary' %>
+                  <%= submit_tag "Send Invite", class: 'invite_btn btn btn-primary' %>
                 </div>
               <% end %>
           </div>
@@ -92,3 +92,9 @@
   </div>
 
 <br>
+
+<script type="text/javascript">
+  $('.invite_btn').closest('form').on('ajax:success', function() {
+    $('#inviteModal').modal('hide')
+  });
+</script>

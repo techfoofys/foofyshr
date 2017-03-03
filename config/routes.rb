@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :leave_applications
+  resources :invites
   resources :instalments  do
     collection do
       get 'get_instalments'
@@ -25,7 +27,7 @@ Rails.application.routes.draw do
     collection do
       get 'users'
       get 'get_user_profile'
-      get 'invite'
+      post 'invite'
     end
   end
 
