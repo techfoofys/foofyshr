@@ -4,11 +4,16 @@ class WelcomeController < ApplicationController
   before_action :set_project , only: [:public_project]
 
   def index
-    
-    @user_profiles = UserProfile.where(status: Status.where(title: "Active").first)
+
+
     @birthday_users = []
+    @user_profiles = []
     if UserProfile.all.present?
-        @birthday_users = UserProfile.where("cast(strftime('%m', dob) as int) = ?", Date.today.month).order(:dob )
+        @user_profiles = UserProfile.where(status: Status.where(title: "Active").first)
+        if !UserProfile.last.dob.nil?
+            @birthday_users = UserProfile.where("cast(strftime('%m', dob) as int) = ?", Date.today.month).order(:dob )
+        end
+
     end
 
     @projects = Project.all

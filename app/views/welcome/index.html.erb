@@ -21,8 +21,21 @@
                     <% @user_profiles.each do |user_profile| %>
                       <tr>
                         <td><%= link_to user_profile.user.name , public_path(user_profile.id) , class:''%></td>
-                        <td><%= user_profile.role.title %></td>
-                        <td><%= user_profile.designation.title %></td>
+                        <td>
+                          <% if user_profile.role.nil? %>
+                            NA
+                            <% else %>
+                            <%= user_profile.role.title %>
+                          <% end %>
+
+                        </td>
+                        <td>
+                          <% if user_profile.designation.nil? %>
+                            NA
+                            <% else %>
+                                <%= user_profile.designation.title %>
+                          <% end %>
+                        </td>
                       </tr>
                     <% end %>
                   </tbody>
