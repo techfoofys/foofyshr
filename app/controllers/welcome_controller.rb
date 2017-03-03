@@ -11,7 +11,9 @@ class WelcomeController < ApplicationController
     if UserProfile.all.present?
         @user_profiles = UserProfile.where(status: Status.where(title: "Active").first)
         if !UserProfile.last.dob.nil?
-            @birthday_users = UserProfile.where("cast(strftime('%m', dob) as int) = ?", Date.today.month).order(:dob )
+             @birthday_users = UserProfile.where("extract(month from dob) = ?", Date.today.month).order(:dob )
+            # UserProfile.all.each do |user_profile|
+            # end
         end
 
     end
