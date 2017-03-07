@@ -63,6 +63,11 @@
     </div>
   </div>
 
+  <div class="form-group col-sm-4">
+    <%= f.label :probation %>
+    <%= f.select :probation, options_for_select([['Active', true], ['Deactive', false]], selected:  user_profile.probation), {class: 'form-control input-md'} %>
+  </div>
+
 
 
 
